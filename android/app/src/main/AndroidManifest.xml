@@ -56,6 +56,10 @@
             android:value="2" />
     </application>
     <queries>
+        <!-- Cần để app tìm được bộ đọc giọng nói của máy (Android 11 trở lên) -->
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>

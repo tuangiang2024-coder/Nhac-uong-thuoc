@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import '../alarm_service.dart';
 import '../models.dart';
+import '../photos.dart';
 import 'edit_screen.dart';
 import 'ring_screen.dart';
 import 'settings_screen.dart';
@@ -191,7 +192,7 @@ class _SlotCard extends StatelessWidget {
             ),
             for (final med in meds)
               ListTile(
-                leading: const Icon(Icons.medication, size: 30),
+                leading: _thumb(med),
                 title: Text(
                   med.name,
                   style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
@@ -211,6 +212,16 @@ class _SlotCard extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Ảnh nhỏ của thuốc trong danh sách, hoặc biểu tượng nếu chưa có ảnh.
+Widget _thumb(Medicine med) {
+  final file = PhotoStore.fileFor(med.photo);
+  if (file == null) return const Icon(Icons.medication, size: 30);
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(8),
+    child: Image.file(file, width: 56, height: 56, cacheWidth: 168, fit: BoxFit.cover),
+  );
 }
 
 class _EmptyState extends StatelessWidget {

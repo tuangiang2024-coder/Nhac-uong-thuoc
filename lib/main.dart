@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'alarm_service.dart';
 import 'models.dart';
+import 'photos.dart';
 import 'screens/home_screen.dart';
 import 'screens/ring_screen.dart';
 
@@ -15,6 +16,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await AlarmService.init(onTap: _openRingScreen);
+  await PhotoStore.init();
 
   // Luôn đồng bộ lại chuông mỗi khi mở app, phòng khi máy đã xoá lịch.
   final medicines = await MedicineStore.load();

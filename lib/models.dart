@@ -10,6 +10,8 @@ class Medicine {
     required this.dose,
     required this.note,
     required this.times,
+    this.guide = '',
+    this.photo = '',
   });
 
   final String id;
@@ -20,6 +22,13 @@ class Medicine {
 
   /// Ghi chú ngắn, ví dụ "sau ăn". Có thể để trống.
   String note;
+
+  /// Hướng dẫn cách uống, máy sẽ đọc to khi đến giờ.
+  /// Ví dụ: "Uống với một cốc nước đầy, không nhai viên thuốc".
+  String guide;
+
+  /// Tên file ảnh viên/vỉ thuốc (xem PhotoStore). Để trống nếu chưa có ảnh.
+  String photo;
 
   /// Các giờ uống, tính bằng số phút kể từ 0 giờ (ví dụ 20:00 = 1200).
   List<int> times;
@@ -39,6 +48,8 @@ class Medicine {
         'dose': dose,
         'note': note,
         'times': times,
+        'guide': guide,
+        'photo': photo,
       };
 
   factory Medicine.fromJson(Map<String, dynamic> json) => Medicine(
@@ -49,6 +60,8 @@ class Medicine {
         times: (json['times'] as List<dynamic>? ?? const [])
             .map((e) => (e as num).toInt())
             .toList(),
+        guide: json['guide'] as String? ?? '',
+        photo: json['photo'] as String? ?? '',
       );
 }
 

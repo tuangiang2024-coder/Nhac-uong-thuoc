@@ -2,6 +2,7 @@
 
 App Android có 2 phần:
 - **Danh sách thuốc**: tên thuốc, mỗi lần uống bao nhiêu, ghi chú (sau ăn…), các giờ uống trong ngày.
+- **Giọng đọc** (bản 2): đến giờ, máy đọc to tiếng Việt tên thuốc, liều và hướng dẫn cách uống, ví dụ: "Mẹ ơi, đến giờ uống thuốc buổi tối rồi ạ. Metformin 500 mi li gam, 1 viên, sau ăn. Uống với một cốc nước đầy."
 - **Chuông báo**: đến giờ, máy đổ chuông lặp lại (kể cả khi đang khoá màn hình), hiện các thuốc cần uống, bấm **Đã uống** để tắt. Chuông tự lặp lại mỗi ngày.
 
 Dữ liệu lưu ngay trong điện thoại, không cần mạng, không cần tài khoản.
@@ -70,6 +71,32 @@ Mở app, bấm biểu tượng bánh răng **Cài đặt chuông**:
 4. Bấm **Thử chuông (sau 10 giây)**, tắt màn hình và chờ. Phải nghe chuông và thấy màn hình bật lên.
 
 Âm lượng chuông theo **âm lượng Báo thức** của máy, nên chuông vẫn kêu khi máy để chế độ rung/im lặng. Hãy chỉnh âm lượng báo thức đủ to.
+
+## Cài giọng đọc tiếng Việt (bản 2)
+
+Trong app, vào **Cài đặt chuông → Giọng đọc**:
+1. Nếu dòng **Giọng tiếng Việt trên máy** ghi "Chưa bật", bấm **Bật**. Chọn bộ đọc **Google** (Dịch vụ lời nói của Google), chọn ngôn ngữ **Tiếng Việt** và tải giọng về. Máy Samsung có thể dùng bộ đọc Samsung nếu có tiếng Việt. Nếu máy chưa có bộ đọc Google, cài **"Dịch vụ lời nói của Google"** (Speech Services by Google) từ CH Play.
+2. Ô **Gọi người uống thuốc là**: gõ "Mẹ", "Bố", "Bà"… để máy gọi đúng người.
+3. Chỉnh **Tốc độ đọc** cho vừa tai, bấm **Nghe thử giọng đọc**.
+
+Khi đến giờ và màn hình chuông mở ra, tiếng chuông tắt và máy chuyển sang đọc lời nhắc, đọc lại mỗi phút cho đến khi bấm **Đã uống** (tối đa 30 phút). Có nút **Nghe lại** để đọc ngay. Nếu máy chưa có giọng tiếng Việt, chuông vẫn kêu như bản cũ.
+
+Khi thêm/sửa thuốc, điền ô **Hướng dẫn cách uống** (ghi đúng theo dặn của bác sĩ/dược sĩ) và bấm **Nghe thử** để nghe máy đọc.
+
+## Ảnh thuốc (bản 3)
+
+Khi thêm/sửa thuốc, bấm **Chụp ảnh** để chụp viên thuốc hoặc vỉ thuốc (hoặc **Chọn ảnh** có sẵn trong máy). Nên chụp gần, đủ sáng, đặt viên thuốc trên nền trơn để thấy rõ màu và hình dáng. Chụp cả mặt vỉ có in tên thuốc càng tốt.
+
+Đến giờ, màn hình chuông hiện ảnh to của từng loại thuốc cần uống. Bấm vào ảnh để xem to hơn, có thể dùng hai ngón tay để phóng to. Danh sách thuốc ở màn hình chính cũng có ảnh nhỏ.
+
+## Cập nhật từ bản cũ
+
+1. Trên GitHub, vào repo, bấm **Add file → Upload files**, kéo toàn bộ nội dung thư mục `nhac_uong_thuoc` mới vào (ghi đè file cũ), bấm **Commit changes**. Nhớ có cả file `android/app/nhac-uong-thuoc.jks` (khoá ký app) và thư mục `android/app/src/main/kotlin`.
+2. Chờ tab **Actions** chạy xong (dấu tích xanh), tải APK mới.
+3. **Riêng lần cập nhật lên bản 2:** gỡ app cũ trên điện thoại trước rồi mới cài bản mới (bản 1 được ký bằng khoá tạm nên không cài đè được). Sau đó nhập lại thuốc.
+4. Từ bản 2 trở đi, app dùng khoá ký cố định: chỉ cần cài đè, danh sách thuốc được giữ nguyên.
+
+Giữ repo GitHub ở chế độ **Private**, vì trong đó có khoá ký app.
 
 ## Sử dụng
 

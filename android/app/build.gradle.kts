@@ -24,10 +24,20 @@ android {
         versionName = flutter.versionName
     }
 
+    // Khoá ký cố định để các bản cập nhật cài đè được lên bản cũ (giữ nguyên dữ liệu).
+    // Chỉ dùng cho gia đình; giữ repo GitHub ở chế độ Private.
+    signingConfigs {
+        create("giaDinh") {
+            storeFile = file("nhac-uong-thuoc.jks")
+            storePassword = "nhacthuoc123"
+            keyAlias = "nhacthuoc"
+            keyPassword = "nhacthuoc123"
+        }
+    }
+
     buildTypes {
         release {
-            // Dùng khoá debug để ký, đủ cho việc cài dùng trong gia đình.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("giaDinh")
         }
     }
 }
